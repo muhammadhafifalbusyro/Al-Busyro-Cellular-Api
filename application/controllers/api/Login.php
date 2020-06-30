@@ -25,15 +25,20 @@ class Login extends REST_Controller
         if ($getData) {
             if ($getData[0]['password'] === $password) {
                 $message = [
+                    'data' => [
+                        'id' => $getData[0]['id'],
+                        'username' => $getData[0]['username'],
+                        'no_hp' => $getData[0]['no_hp'],
+                    ],
                     'status' => 200,
-                    'message' => 'login success',
+                    'message' => 'Login successful',
                 ];
 
                 $this->set_response($message, REST_Controller::HTTP_OK);
             } else {
                 $message = [
                     'status' => 400,
-                    'message' => 'password is wrong',
+                    'message' => 'Password is wrong',
                 ];
 
                 $this->set_response($message, REST_Controller::HTTP_BAD_REQUEST);
@@ -41,7 +46,7 @@ class Login extends REST_Controller
         } else {
             $message = [
                 'status' => 400,
-                'message' => 'account not registered',
+                'message' => 'Account not registered',
             ];
 
             $this->set_response($message, REST_Controller::HTTP_BAD_REQUEST);

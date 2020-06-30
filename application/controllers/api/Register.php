@@ -48,14 +48,14 @@ class Register extends REST_Controller
                     'password' => $this->post('password'),
                 ],
                 'status' => 200,
-                'message' => 'register success',
+                'message' => 'Registration successful',
             ];
 
             $this->set_response($message, REST_Controller::HTTP_CREATED);
         } else {
             $message = [
                 'status' => 400,
-                'message' => 'username already taken',
+                'message' => 'Username already taken',
             ];
             $this->set_response($message, REST_Controller::HTTP_BAD_REQUEST);
         }
